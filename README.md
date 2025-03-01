@@ -4,7 +4,6 @@ This Python script demonstrates a keylogger that captures keystrokes on a Window
 
 ## Features:
 - Captures all keypress events.
-- Detects the currently active window (e.g., browsers).
 - Logs keystrokes to a file.
 - Automatically flushes the buffer every 5 seconds or 100 characters.
 - Encrypts the log file using `cryptography.fernet` encryption.
